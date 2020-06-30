@@ -1,0 +1,36 @@
+.header-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 8vh;
+    background: #FF8700;
+}
+
+.logo {
+    width: 150px;
+}
+
+.carousel-container {
+    margin-top: 8vh;
+}
+
+.products-container{
+    margin-bottom: 8vh;
+}
+
+.card-container{
+    display: flex;
+    justify-content: center;
+}
+
+.footer-container{
+    display: flex;
+    justify-content: center;
+    background-color: #FF8700;
+    align-items: center;
+    height: 8vh;
+}
+
+.titulo-categoria {
+    margin: 20px;
+}

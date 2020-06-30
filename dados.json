@@ -1,0 +1,28 @@
+{
+    "itens":[
+        {
+            "nome":"GoPro",
+            "imagem":"images/gopro.jpg",
+            "descricao":"Câmera para registrar os momentos com qualidade",
+            "preco": "250,00"
+        },
+        {
+            "nome":"Playstation 4",
+            "imagem":"images/ps4.jpg",
+            "descricao":"Videogame moderno para entretenimento",
+            "preco": "220,00"
+        },
+        {
+            "nome":"Capacete",
+            "imagem":"images/capacete.jpg",
+            "descricao":"Equipamento para segurança em motos e bicicletas",
+            "preco": "50,00"
+        },
+        {
+            "nome":"Esteira ergométrica",
+            "imagem":"images/esteira.jpg",
+            "descricao":"Esteira para prática de exercícios físicos",
+            "preco": "300,00"
+        }            
+    ]
+}

@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="theme-color" content="#143A7C">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="manifest" href="manifest.json">
+    <link href="css/styles.css" rel="stylesheet">
+    <link rel="shortcut icon" href="images/icons/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="images/icons/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="images/icons/apple-icon-152x152.png" type="image/x-icon">
+
+    <title>Alugueira Floripa</title>
+  </head>
+  <body>
+    <header class="container-fluid header-container fixed-top">
+        <div class="row">
+            <img src="images/logo.png" class="logo">
+        </div>
+    </header>
+    <section class="container-fluid carousel-container">
+        <div class="row" style="display: flex; justify-content: center">            
+            <img src="images/logo.png" class="logo">
+        </div>
+    </section>
+    <section class="container products-container">
+        <div class="row">
+            <h2 class="titulo-categoria">
+                Produtos
+            </h2>
+        </div>
+        <div class="row">
+            <div class="col-6 card-container">
+                <div class="card shadow p-3 mb-5 bg-white rounded" style="width: 18rem;">
+                    <img src="images/ps4.jpg" class="card-img-top">
+                    <div class="card-body">
+                        <h5 class="card-title">PS4</h5>
+                        <p class="card-text">Um belo console e jogos para alegrar seu fim de semana</p>
+                    </div>
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#produto">
+                        Alugar produto
+                    </button>
+                </div>
+            </div>
+            <div class="col-6 card-container">
+                <div class="card shadow p-3 mb-5 bg-white rounded" style="width: 18rem;">
+                    <img src="images/ps4.jpg" class="card-img-top">
+                    <div class="card-body">
+                        <h5 class="card-title">PS4</h5>
+                        <p class="card-text">Um belo console e jogos para alegrar seu fim de semana</p>
+                    </div>
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#produto">
+                        Alugar produto
+                    </button>
+                </div>
+            </div>
+            <div class="col-6 card-container">
+                <div class="card shadow p-3 mb-5 bg-white rounded" style="width: 18rem;">
+                    <img src="images/ps4.jpg" class="card-img-top">
+                    <div class="card-body">
+                        <h5 class="card-title">PS4</h5>
+                        <p class="card-text">Um belo console e jogos para alegrar seu fim de semana</p>
+                    </div>
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#produto">
+                        Alugar produto
+                    </button>
+                </div>
+            </div>
+            <div class="col-6 card-container">
+                <div class="card shadow p-3 mb-5 bg-white rounded" style="width: 18rem;">
+                    <img src="images/ps4.jpg" class="card-img-top">
+                    <div class="card-body">
+                        <h5 class="card-title">PS4</h5>
+                        <p class="card-text">Um belo console e jogos para alegrar seu fim de semana</p>
+                    </div>
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#produto">
+                        Alugar produto
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer class="container-fluid footer-container fixed-bottom" style="display: flex; justify-content: center">
+        <div class="row">
+            <div class="col-12">
+                <h5 style="color: white">
+                    Versão offline do sistema
+                </h5>
+                <!-- <button type="button" id="btnInstalar" class="btn btn-primary">Instalar</button> -->
+            </div>
+        </div>
+    </footer>
+
+    <div class="modal fade" id="produto" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalCenterTitle">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    ...
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    
+    <script>
+        //Carregar produtos
+        var ajax = new XMLHttpRequest();
+
+        ajax.open("GET", "./dados.json", true);
+
+        ajax.send();
+
+        ajax.onreadystatechange = function(){
+
+            if(ajax.readyState == 4 && ajax.status == 200){
+
+                var data = ajax.responseText;
+
+                var data_json = JSON.parse(data);
+
+                var conteudo = document.getElementById('content_result');
+
+                if(data_json.itens.length == 0){
+
+                    conteudo.innerHTML = '<div class="row"><div class="col-12"><div class="alert alert-danger" role="alert">Nenhum produto cadastrado!</div></div></div>';
+                    
+                }else{
+
+                    let html_conteudo='<div class="row">';
+                    for(var i=0; i < data_json.itens.length; i++){
+                        html_conteudo+= card_produto(data_json.itens[i].nome,data_json.itens[i].imagem,data_json.itens[i].descricao,data_json.itens[i].preco);
+                    }
+                    html_conteudo+='</div>';
+
+                    //Gravar a criação dos elementos
+                    conteudo.innerHTML = html_conteudo;
+                    cache_cards(data_json);
+                }
+            }
+        }
+
+        var card_produto = function(nome, imagem, descricao, preco){
+
+            return '<div class="col-6 card-container">'+
+                '<div class="card shadow p-3 mb-5 bg-white rounded" style="width: 18rem;">'+
+                        '<img src="'+imagem+'" class="card-img-top" alt="...">'+
+                        '<div class="card-body">'+
+                            '<h4>'+nome+'</h4>'+
+                        '<p class="card-text">'+descricao+'</p>'+
+                        '<h5 class="card-text">R$'+preco+'</h5>'+
+                        '</div>'+
+                    '</div>'+
+                '</div>';
+
+        }
+    </script>
+
+  </body>
+</html>
